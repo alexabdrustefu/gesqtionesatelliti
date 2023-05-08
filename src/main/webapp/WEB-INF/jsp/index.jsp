@@ -57,13 +57,11 @@
 					aria-label="Close"></button>
 			</div>
 
-			<div class="p-5 mb-4 bg-warning rounded-3 border border-dark">
+			<div class="p-5 mb-4   rounded-3 border border-dark" style="background-color:MEDIUMSLATEBLUE">
 				<div class="container-fluid py-5">
 					<h1 class="display-5 fw-bold">Benvenuto alla Gestione
 						Satelliti &#128640</h1>
-					<p class="col-md-8 fs-4">Using a series of utilities, you can
-						create this jumbotron, just like the one in previous versions of
-						Bootstrap.</p>
+					<p class="col-md-8 fs-4">Benvenuto in questa applicazione che si occupa con la gestione dei satelliti.</p>
 					<a class="btn btn-success btn-lg"
 						href="${pageContext.request.contextPath}/satellite/search">Vai
 						a Ricerca</a>
