@@ -28,7 +28,7 @@ public class SatelliteController {
 
 	@Autowired
 	private SatelliteService satelliteService;
-
+	
 	@GetMapping
 	public ModelAndView listAll() {
 		ModelAndView mv = new ModelAndView();
@@ -155,7 +155,15 @@ public class SatelliteController {
 		List<Satellite> results = satelliteService.inOrbitaDa10AnniFissi();
 		model.addAttribute("satellite_list_attribute", results);
 		return "satellite/list";
+		
 	}
+	@GetMapping("/nonRientrati")
+	public String nonRientratiStatoFissoMovimento(Model model) {
+		List<Satellite> results= satelliteService.disattivatiNonRientrati();
+		model.addAttribute("nonRientrati_attr",results);
+		return "satellite/list";
+	}
+	
 
 	public static void controllo(Satellite satellite, BindingResult result) {
 
@@ -212,6 +220,30 @@ public class SatelliteController {
 
 		}
 
+	}
+	@GetMapping("/emergenzaShow")
+	public ModelAndView emergenzaShow(RedirectAttributes redirectAttrs) {
+		ModelAndView mv = new ModelAndView();
+		int result = satelliteService.lanciatiAttivi().size();
+		mv.addObject("emergenza_list_attribute_size", result);
+		int resultAll = satelliteService.listAllElements().size();
+		if (result<=0||resultAll <= 0) {
+			redirectAttrs.addFlashAttribute("warningMessage", "Nessun satellite in stato d emergenza");
+			mv.setViewName("redirect:/home");
+			return mv;
+		}
+		mv.addObject("emergenza_list_all_attribute_size", resultAll);
+		mv.setViewName("satellite/emergenza");
+		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
+		return mv;
+	}
+	
+	@PostMapping("/emergenza")
+	public String emergenza(RedirectAttributes redirectAttrs) {
+
+		satelliteService.proceduraEmergenza();
+		redirectAttrs.addFlashAttribute("successMessage", "Operazione eseguita correttamente");
+		return "redirect:/home";
 	}
 
 }

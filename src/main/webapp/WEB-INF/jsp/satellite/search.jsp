@@ -23,51 +23,63 @@
 					</div>
 			  
 			  <div class='card'>
-				    <div class='card-header'>
+				    <div class='card-header border border-warning'>
 				        <h5>Ricerca elementi</h5> 
 				    </div>
-				    <div class='card-body'>
+				    <div class='card-body border border-warning '>
 		
 							<form method="post" action="${pageContext.request.contextPath}/satellite/list" class="row g-3" >
 							
 							
-								<div class="col-md-6">
+								<div class="col-md-6 ">
 									<label for="denominazione" class="form-label">Denominazione </label>
+									<div class="border border-warning">
 									<input type="text" name="denominazione" id="denominazione" class="form-control" placeholder="Inserire la denominazione"  >
+								</div>
 								</div>
 								
 								<div class="col-md-6">
 									<label for="codice" class="form-label">Codice </label>
+									<div class="border border-warning">
 									<input type="text" name="codice" id="codice" class="form-control" placeholder="Inserire il codice"  >
 								</div>
+								</div>
 							
-								<div class="col-md-3">
+								<div class="col-md-3 "> 
+								
 									<label for="dataLancio" class="form-label">Data di Lancio </label>
-                        			<input class="form-control" id="dataLancio" type="date" placeholder="dd/MM/yy"
-                            			title="formato : gg/mm/aaaa"  name="dataLancio"   >
+                        			 	<input class="form-control btn btn-outline-success border border-warning" id="dataLancio" type="date" placeholder="dd/MM/yy"
+                            			title="formato : gg/mm/aaaa"  name="dataLancio">
+								
 								</div>
 								
 								<div class="col-md-3">
 									<label for="dataRientro" class="form-label">Data di Rientro </label>
-                        			<input class="form-control" id="dataRientro" type="date" placeholder="dd/MM/yy"
+                        			<input class="form-control btn btn-outline-danger border border-warning" id="dataRientro" type="date" placeholder="dd/MM/yy"
                             			title="formato : gg/mm/aaaa"  name="dataRientro"   >
 								</div>
 								
 								<div class="col-md-3">
+								
 									<label for="stato" class="form-label">Stato </label>
-								    <select class="form-select" id="stato" name="stato" >
+								  
+								    <select class="form-select btn btn-outline-primary"  id="stato" name="stato " >
+								    
 								    	<option value="" selected> - Selezionare - </option>
 								      	<option value="ATTIVO" >IN_MOVIMENTO</option>
 								      	<option value="SOSPESO" >FISSO</option>
 								      	<option value="DIMESSO" >DISATTIVATO</option>
+								    
 								    </select>
+								    
+								    
 								</div>
 								
 								
 							<div class="col-12">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
-								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/insert">Add New</a>
-								<input class="btn btn-outline-warning" type="reset" value="Ripulisci">
+								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-outline-success">Conferma</button>
+								<a class="btn btn-outline-primary ml-2" href="${pageContext.request.contextPath}/satellite/insert">Inserisci Nuovo</a>
+								<input class="btn btn-outline-danger" type="reset" value="Ripulisci">
 							</div>
 		
 						</form>

@@ -25,7 +25,7 @@
 
 	<!-- Begin page content -->
 	<main class="flex-shrink-0">
-		<div class="container">
+		<div class="container  ">
 
 			<div
 				class="alert alert-success alert-dismissible fade show  ${successMessage==null?'d-none':'' }"
@@ -49,8 +49,8 @@
 
 
 
-			<div class='card'>
-				<div class='card-header'>
+			<div class='card border border-warning'>
+				<div class='card-header border border-warning'>
 					<h5>Lista dei risultati</h5>
 				</div>
 				<div class='card-body'>
@@ -89,7 +89,7 @@
 											<div class="btn btn-sm ml-2 mr-2">
 												<a class="btn  btn-sm btn-outline-secondary"
 													href="${pageContext.request.contextPath}/satellite/show/${satelliteItem.id }">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2"
+												<a class="btn  btn-sm btn-outline-success ml-2 mr-2"
 													href="${pageContext.request.contextPath}/satellite/edit/${satelliteItem.id }">Edit</a>
 												<a class="btn btn-outline-danger btn-sm"
 													href="${pageContext.request.contextPath}/satellite/delete/${satelliteItem.id }">Delete</a>
@@ -131,7 +131,7 @@
 
 														<button type="submit" name="submit" value="submit"
 															id="submit"
-															class="btn  btn-sm btn-outline-primary ml-2 mr-2">Rientro</button>
+															class="btn  btn-sm btn-outline-info ml-2 mr-2">Rientro</button>
 
 
 													</c:if>

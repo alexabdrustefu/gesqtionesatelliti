@@ -2,6 +2,7 @@ package it.prova.gestionesatelliti.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.criteria.Predicate;
@@ -124,6 +125,26 @@ public class SatelliteServiceImpl implements SatelliteService {
 		LocalDate tenYears = LocalDate.now().minusYears(10);
 		StatoSatellite fisso = StatoSatellite.FISSO;
 		return repository.findAllByDataLancioLessThanAndStatoLike(tenYears, fisso);
+	}
+
+
+	@Override
+	public List<Satellite> lanciatiAttivi() {
+
+		List<StatoSatellite> attivi = Arrays.asList(StatoSatellite.FISSO, StatoSatellite.IN_MOVIMENTO);
+
+		return repository.findAllByStatoInAndDataLancioIsNotNull(attivi);
+
+	}
+
+	@Override
+	@Transactional
+	public void proceduraEmergenza() {
+		
+		List<StatoSatellite> attivi = Arrays.asList(StatoSatellite.FISSO, StatoSatellite.IN_MOVIMENTO);
+
+		repository.updateStatoAndDataRientroByStatiAndDataLancioIsNotNull(StatoSatellite.DISATTIVATO,LocalDate.now(),attivi);
+
 	}
 
 }
